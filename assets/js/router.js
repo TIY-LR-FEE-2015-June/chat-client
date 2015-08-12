@@ -13,6 +13,15 @@ var AppRouter = Backbone.Router.extend({
     }
 
     this.listenTo(this.user, 'sync', function() {
+      var userId = this.user.id;
+      $.ajaxPrefilter(function(options) {
+        if (!options.beforeSend) {
+          options.beforeSend = function(xhr) {
+            xhr.setRequestHeader('Authorization', userId);
+          };
+        }
+      });
+
       this.navigate('chat', {trigger: true});
     });
   },
