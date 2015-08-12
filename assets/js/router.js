@@ -13,13 +13,14 @@ var AppRouter = Backbone.Router.extend({
     }
 
     this.listenTo(this.user, 'sync', function() {
-      this.navigate('chat', true);
+      this.navigate('chat', {trigger: true});
     });
   },
 
   routes: {
     '': 'login',
     chat: 'chat',
+    logout: 'logout',
   },
 
   login: function() {
@@ -36,5 +37,11 @@ var AppRouter = Backbone.Router.extend({
 
   chat: function() {
     $('#target').empty();
+  },
+
+  logout: function() {
+    this.user = new User();
+    localStorage.removeItem('userId');
+    this.navigate('', {trigger: true});
   },
 });
