@@ -52,7 +52,7 @@ var AppRouter = Backbone.Router.extend({
     });
     allUsers.fetch();
 
-    $('#target').html(info.render().el);
+    $('#header').html(info.render().el);
 
     var comments = new CommentStream();
     var chatInput = new CommentForm({
