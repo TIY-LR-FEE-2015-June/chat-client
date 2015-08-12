@@ -1,5 +1,3 @@
-var login = new LoginForm({
-  model: new User(),
-});
+var router = new AppRouter();
 
-$('#target').html(login.render().el);
+Backbone.history.start();
