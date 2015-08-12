@@ -45,6 +45,15 @@ var AppRouter = Backbone.Router.extend({
   },
 
   chat: function() {
+    var allUsers = new UserList();
+    var info = new ChannelInfoBar({
+      model: this.user,
+      collection: allUsers,
+    });
+    allUsers.fetch();
+
+    $('#header').html(info.render().el);
+
     var comments = new CommentStream();
     var chatInput = new CommentForm({
       collection: comments,
