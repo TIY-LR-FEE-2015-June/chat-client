@@ -10,6 +10,7 @@ var vendorJs = concat('bower_components', {
     'underscore/underscore-min.js',
     'backbone/backbone-min.js',
     'marionette/lib/backbone.marionette.js',
+    'moment/moment.js',
   ],
   outputFile: 'vendor.js',
 });
