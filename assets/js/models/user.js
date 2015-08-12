@@ -6,3 +6,8 @@ var User = Backbone.Model.extend({
     photo: '',
   },
 });
+
+var UserList = Backbone.Collection.extend({
+  model: User,
+  url: 'http://localhost:1337/user',
+});

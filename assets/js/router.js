@@ -36,7 +36,14 @@ var AppRouter = Backbone.Router.extend({
   },
 
   chat: function() {
-    $('#target').empty();
+    var allUsers = new UserList();
+    var info = new ChannelInfoBar({
+      model: this.user,
+      collection: allUsers,
+    });
+    allUsers.fetch();
+
+    $('#target').html(info.render().el);
   },
 
   logout: function() {
