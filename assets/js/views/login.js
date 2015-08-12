@@ -14,7 +14,7 @@ var LoginForm = Marionette.ItemView.extend({
 
     var username = this.$('.username-input').val();
     this.model.save({username: username}).then(function() {
-      console.log(_this.model);
+      localStorage.setItem('userId', _this.model.id);
     });
   },
 });
