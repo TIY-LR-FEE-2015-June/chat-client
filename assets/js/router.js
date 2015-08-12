@@ -13,6 +13,15 @@ var AppRouter = Backbone.Router.extend({
     }
 
     this.listenTo(this.user, 'sync', function() {
+      var userId = this.user.id;
+      $.ajaxPrefilter(function(options) {
+        if (!options.beforeSend) {
+          options.beforeSend = function(xhr) {
+            xhr.setRequestHeader('Authorization', userId);
+          };
+        }
+      });
+
       this.navigate('chat', {trigger: true});
     });
   },
@@ -36,7 +45,12 @@ var AppRouter = Backbone.Router.extend({
   },
 
   chat: function() {
-    $('#target').empty();
+    var comments = new CommentStream();
+    var chatInput = new CommentForm({
+      collection: comments,
+    });
+
+    $('#target').html(chatInput.render().el);
   },
 
   logout: function() {
