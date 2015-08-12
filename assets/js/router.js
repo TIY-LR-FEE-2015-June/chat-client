@@ -36,7 +36,12 @@ var AppRouter = Backbone.Router.extend({
   },
 
   chat: function() {
-    $('#target').empty();
+    var comments = new CommentStream();
+    var chatInput = new CommentForm({
+      collection: comments,
+    });
+
+    $('#target').html(chatInput.render().el);
   },
 
   logout: function() {
