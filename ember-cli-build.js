@@ -6,6 +6,10 @@ module.exports = function(defaults) {
     // Add options here
   });
 
+  app.import('bower_components/underscore/underscore-min.js');
+  app.import('bower_components/backbone/backbone-min.js');
+  app.import('bower_components/moment/moment.js');
+
   // Use `app.import` to add additional libraries to the generated
   // output files.
   //

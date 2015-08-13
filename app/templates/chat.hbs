@@ -1,0 +1,12 @@
+<ul>
+  {{#each model as |comment|}}
+    <li>
+      <span>@{{comment.user.username}}</span>
+      <span>{{from-now comment.createdAt}}</span>
+      {{comment.message}}
+    </li>
+  {{/each}}
+</ul>
+<form {{action 'addNewComment' on='submit'}}>
+  {{input type="text" value=newMessage class="comment-input"}}
+</form>
